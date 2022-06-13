@@ -27,7 +27,7 @@
 
 ## Overview
 
-The purpose of this repository is to provide a base configuration for using Airflow 2.0 with Docker.
+The purpose of this repository is to provide a base config for Airflow 2.0 with Docker.
 
 This repository can be used as a template for other repositories to build upon. More information about creating a repository from this template [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template).
 
@@ -211,14 +211,14 @@ The default executor is a Sequential Executor which runs tasks sequentially with
 
 ### [Celery](https://docs.celeryproject.org/en/stable/getting-started/introduction.html)
 
-We have chosen the Celery Executor as our Remote Executor to scale out the number of workers.
+Celery Executor as Remote Executor to scale out the number of workers.
 
 For instance we can scale up to three celery clusters by running:
 ```bash
 docker-compose up --scale airflow-worker=3
 ```
 
-Or we could scale up to three celery clusters and two schedulers by running:
+Or scale up to three celery clusters and two schedulers by running:
 ```bash
 docker-compose up --scale airflow-worker=3 --scale airflow-scheduler=2
 ```
@@ -247,10 +247,11 @@ For example after scaling to three celery workers our Flower tool should provide
 
 - [docker-compose.yaml](docker-compose.yaml): build Airflow services
 - [dags](dags/): folder for airflow dags
+- [docker](docker/): folder with Dockerfile 
 - [logs/](logs/): folder for airflow logs
 - [plugins/](plugins/): folder for airflow plugins
 - [airflow.sh](airflow.sh): convenient bash file to run Airflow CLI commands
 - [airflow.cfg](config/airflow.cfg): airflow config file
-- [images/](images/): images for [README](README.md)
+- [Makefile](Makefile) makefile to start, stop, rerun airflow services based on docker/Dockerfile build
 
 </details>
